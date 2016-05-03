@@ -5,6 +5,10 @@ struts要做的问题：程序的架构设计时间，验证问题，分发操作问题，传输的加密，Cookie
 Oracle.DB2:ROWNUM
 SQL Server:TOP
 MySQL:Limit
+分页分为三种
+一种是在数据库中操作分页
+另一种是servlet的操作分页
+最后一种是页面的javascript分页
 解决分页问题的方法：
 方案一：利用合理的类的结构设计实现数据库移值（java开发人员惨）
 这样子每一个数据库都要一个DAOImpl，代码严重重复
