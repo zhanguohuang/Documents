@@ -1,0 +1,30 @@
+scope="prototype" (原型,范例)用于在装配bean时每次都产生新的实例singleton(default) request session
+init-method="method" destroy-method="method" 定义初始化时调用和销毁时调用方法
+也可在http后定义全局default-init-method="method" default-destroy-method="method"
+<constructor-arg value=""><constructor-arg ref="">构造器注入
+<propertry name="" value="">注入属性,一定要有setter方法
+<property name="">
+	<bean class="">  //内部bean的定义，构造方法同样支持，但是结构会非常乱，不可复用
+</property>
+p:paramname="" p:paramname-ref="" //简单注入参数法
+<property name="">
+	<list>
+		<ref bean="">   //用value的话就是表示一般类型
+		<ref bean="">
+		<ref bean="">
+	</list>
+</property>
+<property name="">
+	<map>
+		<ref key="" value-ref="">   //用value的话就是表示一般类型
+		<ref key="" value-ref="">
+		<ref key="" value-ref="">
+	</map>
+</property>
+如果是properties 则用<props>跟map的区别是key-value都只能用String
+<props>
+	<prop key="">string</prop>
+	<prop key="">string</prop>
+	<prop key="">string</prop>
+</props>
+<property name=""><null/></property>转配空值的方法

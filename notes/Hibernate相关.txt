@@ -1,0 +1,53 @@
+//定义类
+@Entity
+@Table(name="t_view_space")
+
+//定义列
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "Name")
+
+//定义多对一的依赖关系
+@ManyToOne
+@JoinColumn(name = "")
+protected User user;
+
+//定义一对多关系
+@OneToMany(mappedBy = "viewSpace", cascade = CascadeType.ALL)
+
+<bean id="dataSource" 
+		class="org.apache.commons.dbcp.BasicDataSource" 
+		destory-method="close" 
+		p:driverClassName="${jdbc.driverClassName}" 
+		p:url="${jdbc.url}" 
+		p:username="${jdbc.username}" 
+		p:password="${jdbc.password}"/>
+	
+	<!-- 定义Hibernate的Session工厂 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSrouce" ref="dataSource"/>
+		<property name="packagesToScan"><!-- 扫描基于JPA注解的PO类目录 -->
+			<list>
+				<value>com.smart.domain</value>
+			</list>
+		</property>
+		<!-- 指定hibernate的属性信息 -->
+		<proprety name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect"><!-- 指定数据库的类型为Mysql -->
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<!-- 在提供数据库操作里显示SQL，方便开发期的调试，在部署时应该将其设计为false -->
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</proprety>	
+	</bean>	
+	
+	<!-- 定义HibernateTemplate -->
+	<bean id="hibernateTemplate" 
+		class="org.springframework.orm.hibernate3.HibernateTemplate" 
+			p:sessionFactory-ref="sessionFactory"/>
+
+Hibernate拥有一级和二级缓存，一级缓存是由Session实现的，系统本身附带并且不可拆卸，所以无需关注。Hibernate使用插件的方法实现二级缓存，默认情况下，二级缓存是关闭的。合理地使用二级缓存可以有效的减少访问数据库的次数，提升应用的整体性能。
+第三方二级缓存组件(EHCache)，在基于JPA注解实体对象或SessionFactory的配置中定义缓存策略。如果是用EHCache,则需要配置echcache.xml文件

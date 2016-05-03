@@ -1,0 +1,44 @@
+mysql>mysql -uroot -pmysqladmin
+显示数据库
+show databases;
+
+显示数据库中的表
+show tables;
+
+显示表中的列
+desc user_table;
+
+创建数据库
+drop database if exists sampledb;
+create database sampledb default chatacter utf8;
+
+使用数据库
+use database;
+
+创建用户表
+create table t_user(
+	user_id		int		AUTO_INCREMENT		primary key,
+	user_name	varchar(30),
+	password	varchar(32),
+	last_visit	datetime,
+	last_ip		varchar(23)	
+)ENGINE=InnoDB;
+//ENGINE=InnoDB作用是设置引擎表示该表支持事务
+
+创建用户登陆日志表
+create table t_login_log(
+	login_log_id	int		AUTO_INCREMENT		primary key,
+	user_id		int,
+	ip		varchar(23),
+	login_datetime	datetime
+)ENGINE=InnoDB;
+
+插入数据
+insert into t_user(user_name,password) values('admin','123456');
+
+显示表内容
+select* from user_table;
+
+提交事务
+commit
+
