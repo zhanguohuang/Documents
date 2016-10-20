@@ -1,3 +1,14 @@
+mysql安装步骤
+basedir = D:\Program Files (x86)\mysql-5.7.16-winx64
+datadir = D:\Program Files (x86)\mysql-5.7.16-winx64\data
+
+#sc delete MySQL
+mysqld -install
+mysqld --initialize-insecure
+net start mysql
+
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('mysqladmin');
+
 mysql>mysql -uroot -pmysqladmin
 显示数据库
 show databases;
