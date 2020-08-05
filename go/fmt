@@ -1,0 +1,15 @@
+%d de cimal integer
+%x, %o, %b integer in hexade cimal, octal, binar y
+%f, %g, %e floating-p oint number: 3.141593 3.141592653589793 3.141593e+00
+%t boole an: true or false
+%c rune (Unico de co de point)
+%s st ring
+%q quot ed str ing "abc" or rune 'c'
+%v any value in a natural for mat
+%T type of any value
+%% literal percent sig n (no operand)
+
+
+fmt.Printf("%d, %x, %o, %b, %f, %g, %e, %t, %s, %q, %v, %T, %%", 12, 15, 10, 3, 0.3123, 0.3333, 3.14+00, false, "123", "abc", "vabcv", "tabc")
+12, f, 12, 11, 0.312300, 0.3333, 3.140000e+00, false, 123, "abc", vabcv, string, %
+
